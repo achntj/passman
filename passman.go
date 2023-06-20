@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-var passDB string = filepath.Join(os.Getenv("GOPATH"), "/password/pass.db")
+var passDB string = filepath.Join(os.Getenv("GOPATH"), "/passman/pass.db")
 
 func add(platform string, username string, password string) {
 	if !get(platform, username, false) {
