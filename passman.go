@@ -51,7 +51,7 @@ func get(platform string, username string, out bool) bool {
 		}
 	}
 	if out {
-		fmt.Printf("USER - '%s' @ PLATFORM '%s' doesn't exist", username, platform)
+		fmt.Printf("USER - '%s' @ PLATFORM '%s' doesn't exist\n", username, platform)
 	}
 	return false
 }
@@ -64,13 +64,36 @@ func main() {
 		var args []string
 		args = os.Args
 		if args[1] == "add" {
-			add(args[2], args[3], args[4])
+			var platform string
+			var username string
+			var pass string
+			fmt.Printf("Enter the platform: ")
+			fmt.Scanln(&platform)
+			fmt.Printf("Enter the username: ")
+			fmt.Scanln(&username)
+			fmt.Printf("Enter the password: ")
+			fmt.Scanln(&pass)
+			fmt.Println("-------------------------")
+			add(platform, username, pass)
+			fmt.Println("-------------------------")
 		} else if args[1] == "get" {
-			get(args[2], args[3], true)
+			var platform string
+			var username string
+			fmt.Printf("Enter the platform: ")
+			fmt.Scanln(&platform)
+			fmt.Printf("Enter the username: ")
+			fmt.Scanln(&username)
+			fmt.Println("-------------------------")
+			get(platform, username, true)
+			fmt.Println("-------------------------")
 		} else {
+			fmt.Println("-------------------------")
 			fmt.Println("Invalid operation ", args[1])
+			fmt.Println("-------------------------")
 		}
 	} else {
+		fmt.Println("-------------------------")
 		fmt.Println("Wrong MASTER PASSWORD :/")
+		fmt.Println("-------------------------")
 	}
 }
